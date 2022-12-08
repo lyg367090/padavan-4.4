@@ -1,4 +1,4 @@
-SRC_NAME = ZeroTierOne-1.8.4
+SRC_NAME = ZeroTierOne-1.10.2
 THISDIR = $(shell pwd)
 FLAGS := DEFS=""
 CFLAGS := -Os -ffunction-sections -fdata-sections
@@ -8,6 +8,7 @@ all: extract_test
 	$(MAKE) -j$(HOST_NCPU) -C $(SRC_NAME)
 
 extract_test:
+	 wget https://github.com/zerotier/ZeroTierOne/archive/refs/tags/1.10.2.tar.gz
 	 if [ ! -d $(SRC_NAME) ] ; then \
 		tar xf $(SRC_NAME).tar.gz ; \
 		patch -d $(SRC_NAME) -p1 -i ../0001-fix-makefile.patch ; \
